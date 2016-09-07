@@ -580,6 +580,22 @@ a:visited {
   margin-left: 1rem;
   color: rgba(0,0,0,0.5);
 }
+.side-block__toggle {
+  display: none;
+}
+.side-block__toggle_active {
+  display: block;
+}
+.side-block__link {
+  display: inline-block;
+  margin-left: 2.5rem;
+  color: #1781c1;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.15s ease-out;
+}
+.side-block__link:hover {
+  border-bottom: 1px solid rgba(23,129,193,0.3);
+}
 .footer {
   background: #b0b9bd;
   padding: 2rem 0;
