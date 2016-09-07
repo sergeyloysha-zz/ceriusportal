@@ -237,21 +237,30 @@ a:visited {
   text-align: center;
   color: #fff;
   opacity: 1;
-  transition: opacity 0.15s ease-out;
+  transition: background 0.15s ease-out;
   cursor: pointer;
 }
 .btn:hover {
-  opacity: 0.8;
+  background: #7ab704;
 }
 .btn:active {
-  opacity: 1;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2) inset;
 }
 .btn_blue {
   background: #1781c1;
 }
+.btn_blue:hover {
+  background: #1373ad;
+}
 .btn_white {
   background: #fff;
   color: #000;
+}
+.btn_white:hover {
+  background: #fff;
+}
+.btn_white:active {
+  box-shadow: none;
 }
 .btn_full {
   width: 100%;
@@ -290,7 +299,7 @@ a:visited {
 .container {
   width: 100%;
   max-width: 1230px;
-  min-width: 768px;
+  min-width: 980px;
   margin: 0 auto;
   padding: 0 1.5rem;
   zoom: 1;
@@ -329,9 +338,20 @@ a:visited {
   min-height: 5.8rem;
 }
 .header__nav {
-  margin-left: -2rem;
+  margin-left: -1rem;
+}
+@media screen and (min-width: 1230px) {
+  .header__nav {
+    margin-left: -2rem;
+  }
 }
 .header__contacts-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -345,28 +365,77 @@ a:visited {
 .header__contacts-list:after {
   clear: both;
 }
+@media screen and (min-width: 1230px) {
+  .header__contacts-list {
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
 .header__contacts-item {
   float: left;
-  margin-right: 2rem;
+  margin: 0.2rem 0;
 }
-.header__contacts-item:last-child {
-  margin-right: 0;
+@media screen and (min-width: 1230px) {
+  .header__contacts-item {
+    margin: 0 2rem 0 0;
+  }
+  .header__contacts-item:last-child {
+    margin-right: 0;
+  }
 }
 .header__contacts-link {
+  position: relative;
+  display: inline-block;
   font-size: 1.6rem;
+  line-height: 2.4rem;
   color: #1c6acc;
+  padding: 0 0 0 3rem;
+}
+.header__contacts-link:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  left: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 0.15s ease-out;
+}
+.header__contacts-link:hover:before {
+  opacity: 0.8;
+}
+.header__contacts-link_email:before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAABQVBMVEWTwVf///+TwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVdEexklAAAAanRSTlMAAAQFBgcICQoLDA0PEBErLS4vMDI3OEJERkhJS0xTVVZXWFlaW1xdYmZpbHR1eHl6e4GChIWGh4uMjY6PkJGSoaeoq62vt72/wMLHyMnKzdDS3d7g4ePm5+jp6+zu8PHy8/b3+Pr7/P3+aVVarAAAAVpJREFUeNplktlSwkAQRXsiiwY3hIgBRAV3xahEAhI0oCIorogSFVQIQ5j//wAnC6mg5/Gemu6q6QuIApQAn87l9uMsUIzMFnNKj+BWCxOtHHQJTx6r2TADwHCiivPekZipYYkFG38WV2ct4a1/L4GL6E/VY4ocjsAYsUHREEGcgT9IeoiK0ocP0jpxGB7B1JuCIKCJCK63u6Nc26kAynRZiJNFBORp9dPK28kHAogjPAiYoYK8Jp6NvLnyQqiYwALIKjIE6aTuCXlMtokhkCpD0Rbt1NZVZW2z44hDa1Qj0RyeF/RGwhzF4APgCUfF7XrHXr5xZy5fBrZ7guBir09s+ruXgERtGpCiToJEXEjgfy8hQCFd+vcleIEKdDaIjeeRfn707dGx/KvuMwWareGs3znUMb6xD0XfnGJV5IzThjMtXPC4yhAsa1YZesq8uyUUNi7IssA79fkFbetZGs/imyoAAAAASUVORK5CYII=");
+}
+.header__contacts-link_phone:before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAABMlBMVEUAAACTwVf///+TwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeTwVeeeKBrAAAAZXRSTlMAAAABAwQFBgcICQoLDA0PEBEXGhwoKy0uLzAyNDc4OUFCREZHSElKS0xQU1dydHV4eXp7fH6BgoSFhoeLjI2Oj5CRlJahp6izub/AwsjR1d7i4+Xm5+jp6/Dx8vP29/j6+/z9/n6W3hMAAAFfSURBVHjaVdLnUsJQEAXg3QhSNCpWBBExghErFogBNKgBBbETGxBvcN//FbxpgOfXmXwzNzO7C4IgoJ0Z6bBSOZBFXgU7HizrfWKdDiOzER+DUJUZajKIGEwpBquGfZhrsbKIXqIqa8ZcCLe/NxG3tLRH2W4z5ECFZRBviLpTnuSsmg1xVkKM9IhoyQOhPEgIAPWPCOIa8Sx4ANNvOsCMqfCeJ6KngA9Q6okg0zrvu0R3iziEFElQYEHeN4jOcASTrACaAbzPEzXGAAwNag7gA32K/+HYeQr3iYojCLIjkCiFPOIzWXsYCvg/3wGxd452ZKLf2/5r3gHFnAXQDXcUKjk54RB9rwNAYlBGJ6eWDS8cymwV+BCvrJwr6UcONcTMT9Ufe9aVCel6m3//akccEGItpkaHiyqy+5i/2vAFM5SUvdpkqcMuQ2PHEG+Y7jH09ZXxK+ER5YKmFaTh+fwB0/tCuTaax2kAAAAASUVORK5CYII=");
+}
+.header__user {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 13rem;
 }
 .header__user-item {
   display: block;
-  position: relative;
   font-size: 1.6rem;
   padding-right: 3rem;
   cursor: pointer;
+  height: 4rem;
+  overflow: hidden;
 }
 .header__user-item:after {
   content: ' ';
   position: absolute;
-  top: 0.8rem;
+  top: 50%;
+  margin-top: -0.3rem;
   right: 1rem;
   width: 1rem;
   height: 0.5rem;
@@ -375,17 +444,23 @@ a:visited {
   background-repeat: no-repeat;
   background-size: 1rem 0.5rem;
 }
-.header__user-dropdown.active {
-  display: block;
-}
 .dropdown {
-  display: none;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
   position: absolute;
   right: 0;
-  top: 4.9rem;
+  top: 4.8rem;
   background: #fff;
   z-index: 9999;
   box-shadow: 0 0.5rem 0.8rem rgba(0,0,0,0.1);
+  transition: opacity;
+  transition: max-height 0.3s, opacity 0.1s, top 0.2s;
+}
+.dropdown_active {
+  max-height: 30rem;
+  opacity: 1;
+  top: 5.8rem;
 }
 .dropdown__list {
   min-width: 15rem;
@@ -400,6 +475,7 @@ a:visited {
   display: block;
   padding: 1rem 2rem;
   background: #fff;
+  color: #4c4d4f;
   transition: background 0.15s ease-out;
 }
 .dropdown__link:hover {
@@ -421,14 +497,24 @@ a:visited {
 }
 .nav__item {
   float: left;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
+}
+@media screen and (min-width: 1230px) {
+  .nav__item {
+    margin: 0 1rem;
+  }
 }
 .nav__link {
   display: block;
-  padding: 1rem;
+  padding: 0.5rem;
   color: #221f1f;
   font-weight: 500;
   transition: color 0.15s ease-out;
+}
+@media screen and (min-width: 1230px) {
+  .nav__link {
+    padding: 1rem;
+  }
 }
 .nav__link_active,
 .nav__link:hover {

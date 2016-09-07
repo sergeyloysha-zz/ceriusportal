@@ -141,12 +141,12 @@ jQuery(document).ready(function($) {
   $(document).click( function(e) {
     var container = $('.dropdown, .header__user-item');
     if (!container.is(e.target) && container.has(e.target).length === 0) {
-      $('.dropdown').removeClass('active');
+      $('.dropdown').removeClass('dropdown_active');
     }
   });
 
   $('.header__user-item').on('click', function(e){
-    $(this).find('.header__user-dropdown').toggleClass('active');
+    $(this).find('.header__user-dropdown').toggleClass('dropdown_active');
   });
 
     $('.custom-select').each(function(){
