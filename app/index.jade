@@ -28,15 +28,22 @@ block content
             a.header__contacts-link(href="tel:(888) 565-5289")
               span (888) 565-5289
         .header__user
-          a.header__user-link
+          .header__user-item
             span Roman Kvartalnov
             .header__user-dropdown.dropdown
+              ul.dropdown__list
+                li.dropdown__item
+                  a.dropdown__link
+                    span Some link
+                li.dropdown__item
+                  a.dropdown__link
+                    span Logout
   .wrapper
     .container
       aside.container__side.side
         .side-block
           .side-block__title
-            span Functional Role
+            input(type="text", name="name", placeholder="Functional Role").side-block__title-input
           .side-block__content
             ul.side-block__list
               li.side-block__list-item
@@ -73,7 +80,7 @@ block content
                   span.side-block__list-link General Councel
         .side-block
           .side-block__title
-            span Industry
+            input(type="text", name="name", placeholder="Industry").side-block__title-input
           .side-block__content
             ul.side-block__list
               li.side-block__list-item
@@ -90,8 +97,33 @@ block content
                   span.side-block__list-link CEO
         .side-block
           .side-block__title
-            span Location
+            input(type="text", name="name", placeholder="Location").side-block__title-input
           .side-block__content
+            .side-block__field
+              select.custom-select
+                option Alaska
+                option Alabama
+                option Alabama
+                option Alabama
+                option Alabama
+                option Alabama
+                option Alabama
+                option Alabama
+                option Alabama
+                option Alabama
+                option Alabama
+                option Alabama
+            .side-block__field
+              label.side-block__field-label ZIP
+              input.side-block__field-input(type="text")
+            .side-block__field
+              label.side-block__field-label Radius
+              .side-block__field-group
+                input.side-block__field-input(type="text")
+                span.side-block__field-sub miles
+        .side-block
+          .side-block__title
+            input(type="text", name="name", placeholder="Expertise").side-block__title-input
         .side-block.side-block
           .side-block__content.side-block__content_white
             .side-block__controls

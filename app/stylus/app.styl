@@ -40,7 +40,7 @@ clearfix()
     -webkit-tap-highlight-color: alpha(color-white, 0)
 
 ::selection
-  //background alpha(#28bbbb, 0.05)
+  background alpha(#28bbbb, 0.05)
 
 input
 textarea
@@ -81,6 +81,14 @@ a:visited
   font-size 1.6rem
   text-align center
   color color-white
+  opacity 1
+  transition opacity .15s ease-out
+
+  &:hover
+    opacity .8
+
+  &:active
+    opacity 1
 
   &_blue
     background #1781c1
@@ -111,7 +119,6 @@ a:visited
     background-size 1.7rem 1.6rem
     background-repeat no-repeat
     background-position center
-    transition background-image .15s ease-out
 
   &_active:before
   &:hover:before
@@ -172,6 +179,58 @@ a:visited
       font-size 1.6rem
       color color-blue
 
+  &__user
+
+    &-item
+      display block
+      position relative
+      font-size 1.6rem
+      padding-right 3rem
+      cursor pointer
+
+      &:after
+        content ' '
+        position absolute
+        top 0.8rem
+        right 1rem
+        width 1rem
+        height 0.5rem
+        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iNDBweCIgaGVpZ2h0PSIyNXB4IiB2aWV3Qm94PSIwIDAgNDAgMjUiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+VHJpYW5nbGU8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwb2x5Z29uIGlkPSJUcmlhbmdsZSIgZmlsbD0iIzAwMDAwMCIgcG9pbnRzPSIwIDAgNDAgMCAyMCAyNSI+PC9wb2x5Z29uPiAgICA8L2c+PC9zdmc+');
+        background-position center
+        background-repeat no-repeat
+        background-size 1rem 0.5rem
+
+
+    &-dropdown.active
+      display block
+
+.dropdown
+  display none
+  position absolute
+  right 0
+  top 4.9rem
+  background #fff
+  z-index 9999
+  box-shadow 0 0.5rem 0.8rem alpha(#000, 0.1)
+
+  &__list
+    min-width 15rem
+    padding 0
+    margin 0
+    list-style none
+
+  &__item
+    position relative
+
+  &__link
+    display block
+    padding 1rem 2rem
+    background #fff
+    transition background .15s ease-out
+
+    &:hover
+      background alpha(#000, 0.01)
+
 .nav
   &__list
     margin 0
@@ -207,18 +266,31 @@ a:visited
 
 .side
   background color-white
-  overflow hidden
+  //overflow hidden
 
   &-block
     position relative
 
     &__title
       position relative
-      padding 2rem 3rem
-      font-size 1.8rem
-      color #3c4144
-      box-shadow 0 0 4rem rgba(0,0,0,.15)
       z-index 2
+
+      &-input
+        position relative
+        border 0
+        width 100%
+        padding 2rem 3rem
+        font-size 1.8rem
+        color #3c4144
+        box-shadow 0 0 4rem rgba(0,0,0,.1)
+        transform scale(1)
+        transition transform .15s ease-out
+        cursor pointer
+
+        &:focus
+          transform scale(1.05)
+          z-index 9999
+          cursor text
 
     &__content
       position relative
@@ -248,23 +320,27 @@ a:visited
         z-index -1
         position absolute
 
+        &:checked + .side-block__list-link:before
+          background-image url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+QXJ0Ym9hcmQ8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+ICAgICAgICA8cmVjdCBpZD0icGF0aC0xIiB4PSIwIiB5PSIwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiPjwvcmVjdD4gICAgPC9kZWZzPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJBcnRib2FyZCI+ICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTQiPiAgICAgICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlLTIiIHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PC9yZWN0PiAgICAgICAgICAgICAgICA8ZyBpZD0iR3JvdXAtMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNC4wMDAwMDAsIDQuMDAwMDAwKSI+ICAgICAgICAgICAgICAgICAgICA8ZyBpZD0i0JHQtdC3LdC90LDQt9Cy0LDQvdC40Y8tKDEpIj4gICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iUmVjdGFuZ2xlIj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IlBhZ2UtMSI+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iUmVjdGFuZ2xlLUNsaXBwZWQiPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxtYXNrIGlkPSJtYXNrLTIiIGZpbGw9IndoaXRlIj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L21hc2s+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGcgaWQ9InBhdGgtMSI+PC9nPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxnIGlkPSJSZWN0YW5nbGUiIG1hc2s9InVybCgjbWFzay0yKSIgc3Ryb2tlPSIjOTc5Nzk3IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9IiNGRkZGRkYiPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8cmVjdCBpZD0icGF0aC0xIiB4PSIwIiB5PSIwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiPjwvcmVjdD4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZz4gICAgICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMiw1IEw1LjQ2OTEzODMxLDcuNzQ1MjM3MzUiIGlkPSJMaW5lIiBzdHJva2U9IiMxNzgxQzEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSI+PC9wYXRoPiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTUuODMyOTc5ODksNy45NzUyOTQxNCBMMTIuMDAwMDAwMiwwLjk5OTk5OTk3NiIgaWQ9IkxpbmUiIHN0cm9rZT0iIzE3ODFDMSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIj48L3BhdGg+ICAgICAgICAgICAgICAgIDwvZz4gICAgICAgICAgICA8L2c+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=')
       &-link
         position relative
         display inline-block
         color #000000
         margin-left 2.5rem
+        cursor pointer
 
         &:before
           position absolute
           left -2.5rem
-          top 0.5rem
+          top 0
           content ' '
-          width 1rem
-          height 1rem
-          background-image url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSIwIDAgMTIgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+UmVjdGFuZ2xlPC90aXRsZT4gICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+ICAgIDxkZWZzPiAgICAgICAgPHJlY3QgaWQ9InBhdGgtMSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIj48L3JlY3Q+ICAgICAgICA8bWFzayBpZD0ibWFzay0yIiBtYXNrQ29udGVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgbWFza1VuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeD0iMCIgeT0iMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIiBmaWxsPSJ3aGl0ZSI+ICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4gICAgICAgIDwvbWFzaz4gICAgPC9kZWZzPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDx1c2UgaWQ9IlJlY3RhbmdsZSIgc3Ryb2tlPSIjOTc5Nzk3IiBtYXNrPSJ1cmwoI21hc2stMikiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0iI0ZGRkZGRiIgeGxpbms6aHJlZj0iI3BhdGgtMSI+PC91c2U+ICAgIDwvZz48L3N2Zz4=')
+          width 2rem
+          height 2rem
+          background-image url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+QXJ0Ym9hcmQ8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+ICAgICAgICA8cmVjdCBpZD0icGF0aC0xIiB4PSIwIiB5PSIwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiPjwvcmVjdD4gICAgPC9kZWZzPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJBcnRib2FyZCI+ICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTQiPiAgICAgICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlLTIiIHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PC9yZWN0PiAgICAgICAgICAgICAgICA8ZyBpZD0iR3JvdXAtMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNC4wMDAwMDAsIDQuMDAwMDAwKSI+ICAgICAgICAgICAgICAgICAgICA8ZyBpZD0i0JHQtdC3LdC90LDQt9Cy0LDQvdC40Y8tKDEpIj4gICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iUmVjdGFuZ2xlIj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IlBhZ2UtMSI+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iUmVjdGFuZ2xlLUNsaXBwZWQiPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxtYXNrIGlkPSJtYXNrLTIiIGZpbGw9IndoaXRlIj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L21hc2s+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGcgaWQ9InBhdGgtMSI+PC9nPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxnIGlkPSJSZWN0YW5nbGUiIG1hc2s9InVybCgjbWFzay0yKSIgc3Ryb2tlPSIjOTc5Nzk3IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9IiNGRkZGRkYiPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8cmVjdCBpZD0icGF0aC0xIiB4PSIwIiB5PSIwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiPjwvcmVjdD4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZz4gICAgICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgIDwvZz4gICAgICAgICAgICA8L2c+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=')
           background-repeat no-repeat
           background-position center
-          background-size 1rem
+          background-size 2rem
+          transition background-image .15s ease-out
 
     &__hr
       margin 1rem 0
@@ -278,6 +354,36 @@ a:visited
       &_center
         display flex
         justify-content center
+
+    &__field
+      display flex
+      align-items center
+      border-bottom 1px solid #dddddd
+      margin-bottom 1rem
+
+      &-group
+        display flex
+        align-items center
+
+      &-label
+        width 8rem
+        cursor pointer
+        color alpha(#000000, 0.5)
+
+      &-input
+        width 100%
+        border 0
+        padding 0.5rem 0
+        background transparent
+        font-weight 500
+        color #000
+
+      &-sub
+        display block
+        width 5rem
+        margin-left 1rem
+        color alpha(#000000, 0.5)
+
 
 .footer
   background #b0b9bd
@@ -496,3 +602,107 @@ a:visited
       height 3rem
       margin-left auto
       background rgba(0,0,0,.2)
+
+.select-hidden
+  display none
+  visibility hidden
+
+.select
+  position relative
+  cursor pointer
+  display inline-block
+  width 100%
+
+.select-styled {
+  padding 0.5rem 0
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  color alpha(#000000, 0.5)
+}
+.select-styled:after {
+  content " "
+  position absolute
+  top 1.4rem
+  right 0
+  width 1rem
+  height 0.4rem
+  background-image url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iNDBweCIgaGVpZ2h0PSIyNXB4IiB2aWV3Qm94PSIwIDAgNDAgMjUiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+VHJpYW5nbGU8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwb2x5Z29uIGlkPSJUcmlhbmdsZSIgZmlsbD0iIzAwMDAwMCIgcG9pbnRzPSIwIDAgNDAgMCAyMCAyNSI+PC9wb2x5Z29uPiAgICA8L2c+PC9zdmc+');
+  background-position center
+  background-repeat no-repeat
+  background-size 1rem 0.5rem
+  opacity .6
+}
+.select-styled:hover {
+  background-color transparent
+}
+.select-styled:active, .select-styled.active {
+  background-color transparent
+}
+.select-styled.active:after {
+  top 1.4rem
+  transform rotate(180deg)
+}
+
+.select-content
+  display none
+
+.select-options
+  margin 0
+  padding 0
+  list-style none
+
+.select-options li
+  margin: 0.5rem 2rem 0.5rem 0
+  padding: 0.5rem 0
+  transition: all 0.15s ease-in;
+
+.select-options li[rel="hide"]
+  display none
+
+
+.nano {
+  position : relative;
+  width    : 100%;
+  height   : 100%;
+  overflow : hidden;
+}
+.nano .content {
+  position      : absolute;
+  overflow      : scroll;
+  overflow-x    : hidden;
+  top           : 0;
+  right         : 0;
+  bottom        : 0;
+  left          : 0;
+}
+.nano .content:focus {
+  outline: thin dotted;
+}
+.nano .content::-webkit-scrollbar {
+  visibility: hidden;
+}
+.has-scrollbar .content::-webkit-scrollbar {
+  visibility: visible;
+}
+.nano > .pane {
+  background : rgba(0,0,0,.1);
+  position   : absolute;
+  width      : 0.4rem;
+  right      : 0;
+  top        : 0;
+  bottom     : 0;
+  visibility : hidden\9;
+  z-index 9999
+}
+.nano > .pane > .slider
+  background #1781c1
+  position relative
+
+.nano:hover > .pane, .pane.active, .pane.flashed {
+  visibility : visible\9;
+}
+
+.nano
+  height 30rem
