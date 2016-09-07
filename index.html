@@ -300,11 +300,19 @@
             </form>
           </section>
           <section class="create-post">
-            <h3 class="create-post__text">Let the executives come to you!</h3><a class="btn create-post__btn">Create a post</a>
+            <div class="create-post__head">
+              <h3 class="create-post__text">Let the executives come to you!</h3><a id="create-post__btn" class="btn create-post__btn">Create a post</a>
+            </div>
+            <form id="create-post__form" class="create-post__form">
+              <textarea placeholder="Post Position/Assignment Here" class="create-post__textarea"></textarea>
+              <div class="create-post__controls">
+                <input type="submit" name="name" value="Create a post" class="btn create-post__btn">
+              </div>
+            </form>
           </section>
           <section class="executives">
-            <div class="executives__find"><span class="executives__find-text">We found <a href="#" class="executives__find-link">1 624 number of executives</a> for you:</span></div>
-            <ul class="executives__list">                    
+            <div class="executives__find"><span class="executives__find-text">We found <a href="#executives" class="executives__find-link">1 624 number of executives</a> for you:</span></div>
+            <ul id="executives" class="executives__list">
               <li class="executives__list-item">
                 <div class="executive executive_new">
                   <div class="executive__id"><span>#40568001</span></div>

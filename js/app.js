@@ -9,6 +9,24 @@ if(e&&1===a.nodeType)while(c=e[d++])a.removeAttribute(c)}}),hb={set:function(a,b
 
 jQuery(document).ready(function($) {
 
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+
+  $('#create-post__btn').on('click', function(e){
+    e.preventDefault();
+    $('.create-post').addClass('create-post_active')
+  });
+
   var expertiseLimit = 10;
   var industriesLimit = 8;
   var sideLimit = 5;
