@@ -9,6 +9,79 @@ if(e&&1===a.nodeType)while(c=e[d++])a.removeAttribute(c)}}),hb={set:function(a,b
 
 jQuery(document).ready(function($) {
 
+  var expertiseLimit = 10;
+  var industriesLimit = 8;
+
+  $('.executive__lists-text_expertise').each(function(){
+
+    $list = $(this).find('span');
+
+    if($list.length > expertiseLimit) {
+      var out = $list.length - expertiseLimit;
+      var $toggleContainer = $('<div />', {
+          'class': 'executive__toggle'
+      });
+
+      var $newList;
+
+      $newList = $.grep($list, function(value, i) {
+        return i < expertiseLimit;
+      });
+
+      var $toggleList;
+
+      $toggleList = $.grep($list, function(value, i) {
+        return i >= expertiseLimit;
+      });
+
+      $toggleContainer.append($toggleList);
+
+      $(this).html('');
+      $(this).append($newList);
+      $(this).append($toggleContainer);
+      $(this).append('<a class="executive__link">'+ out +' more...</a>');
+    }
+
+  })
+
+  $('.executive__lists-text_industries').each(function(){
+
+    $list = $(this).find('span');
+
+    if($list.length > industriesLimit) {
+      var out = $list.length - industriesLimit;
+      var $toggleContainer = $('<div />', {
+          'class': 'executive__toggle'
+      });
+
+      var $newList;
+
+      $newList = $.grep($list, function(value, i) {
+        return i < industriesLimit;
+      });
+
+      var $toggleList;
+
+      $toggleList = $.grep($list, function(value, i) {
+        return i >= industriesLimit;
+      });
+
+      $toggleContainer.append($toggleList);
+
+      $(this).html('');
+      $(this).append($newList);
+      $(this).append($toggleContainer);
+      $(this).append('<a class="executive__link">'+ out +' more...</a>');
+    }
+
+  })
+
+  $('.executive__link').on('click', function(e){
+    e.preventDefault();
+    $(this).hide();
+    $(this).prev().addClass('executive__toggle_active');
+  });
+
   $(document).click( function(e) {
     var container = $('.dropdown, .header__user-item');
     if (!container.is(e.target) && container.has(e.target).length === 0) {
