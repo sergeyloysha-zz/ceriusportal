@@ -22,21 +22,19 @@ block content
                 span FAQ
         ul.header__contacts-list
           li.header__contacts-item
-            a.header__contacts-link(href="#")
-              span Contact Cerius
+            a.header__contacts-link.header__contacts-link_email(href="#") Contact Cerius
           li.header__contacts-item
-            a.header__contacts-link(href="tel:(888) 565-5289")
-              span (888) 565-5289
+            a.header__contacts-link.header__contacts-link_phone(href="tel:(888) 565-5289") (888) 565-5289
         .header__user
           .header__user-item
             span Roman Kvartalnov
             .header__user-dropdown.dropdown
               ul.dropdown__list
                 li.dropdown__item
-                  a.dropdown__link
+                  a.dropdown__link(href='#')
                     span Some link
                 li.dropdown__item
-                  a.dropdown__link
+                  a.dropdown__link(href='#')
                     span Logout
   .wrapper
     .container
@@ -279,7 +277,9 @@ block content
                         img(src="http://placehold.it/50x50", alt="")
                       .executive__head-title Information Technology,
                     .executive__all
-                      span Managing Director, General Management, Operations
+                      span Managing Director, 
+                      span General Management, 
+                      span Operations
                     .executive__controls
                       a.btn.executive__btn
                         sapn Get introduced
