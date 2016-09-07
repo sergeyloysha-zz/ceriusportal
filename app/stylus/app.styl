@@ -384,6 +384,22 @@ a:visited
         margin-left 1rem
         color alpha(#000000, 0.5)
 
+    &__toggle
+      display none
+
+      &_active
+        display block
+
+    &__link
+      display inline-block
+      margin-left 2.5rem
+      color #1781c1
+      border-bottom 1px solid transparent
+      transition border-bottom .15s ease-out
+
+      &:hover
+        border-bottom 1px solid alpha(#1781c1, .3)
+
 
 .footer
   background #b0b9bd

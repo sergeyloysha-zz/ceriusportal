@@ -11,6 +11,38 @@ jQuery(document).ready(function($) {
 
   var expertiseLimit = 10;
   var industriesLimit = 8;
+  var sideLimit = 5;
+
+  $('.side-block__list').each(function(){
+
+    $list = $(this).find('li.side-block__list-item');
+
+    if($list.length > sideLimit) {
+      var $toggleContainer = $('<div />', {
+          'class': 'side-block__toggle'
+      });
+
+      var $newList;
+
+      $newList = $.grep($list, function(value, i) {
+        return i < sideLimit;
+      });
+
+      var $toggleList;
+
+      $toggleList = $.grep($list, function(value, i) {
+        return i >= sideLimit;
+      });
+
+      $toggleContainer.append($toggleList);
+
+      $(this).html('');
+      $(this).append($newList);
+      $(this).append($toggleContainer);
+      $(this).append('<a class="side-block__link">More...</a>');
+    }
+
+  });
 
   $('.executive__lists-text_expertise').each(function(){
 
@@ -42,7 +74,7 @@ jQuery(document).ready(function($) {
       $(this).append('<a class="executive__link">'+ out +' more...</a>');
     }
 
-  })
+  });
 
   $('.executive__lists-text_industries').each(function(){
 
@@ -74,7 +106,13 @@ jQuery(document).ready(function($) {
       $(this).append('<a class="executive__link">'+ out +' more...</a>');
     }
 
-  })
+  });
+
+  $('.side-block__link').on('click', function(e){
+    e.preventDefault();
+    $(this).hide();
+    $(this).prev().addClass('side-block__toggle_active');
+  });
 
   $('.executive__link').on('click', function(e){
     e.preventDefault();
