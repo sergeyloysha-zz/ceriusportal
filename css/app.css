@@ -690,6 +690,12 @@ a:visited {
   width: 65%;
   float: left;
 }
+.executive__toggle {
+  display: none;
+}
+.executive__toggle_active {
+  display: inline;
+}
 .executive__link {
   color: #1781c1;
   border-bottom: 1px solid transparent;
