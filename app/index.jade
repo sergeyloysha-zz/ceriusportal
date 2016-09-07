@@ -255,14 +255,19 @@ block content
             input(type="submit", name="name", value="").search-form__btn
             
         section.create-post
-          h3.create-post__text Let the executives come to you!
-          a.btn.create-post__btn Create a post
+          .create-post__head
+            h3.create-post__text Let the executives come to you!
+            a.btn.create-post__btn#create-post__btn Create a post
+          form.create-post__form#create-post__form
+            textarea(placeholder='Post Position/Assignment Here').create-post__textarea
+            .create-post__controls
+              input(type="submit", name="name", value="Create a post").btn.create-post__btn
         section.executives
           .executives__find
             span.executives__find-text We found 
-              a(href="#").executives__find-link 1 624 number of executives
+              a(href="#executives").executives__find-link 1 624 number of executives
               |  for you:
-          ul.executives__list                     
+          ul.executives__list#executives
             li.executives__list-item
               .executive.executive_new
                 .executive__id
