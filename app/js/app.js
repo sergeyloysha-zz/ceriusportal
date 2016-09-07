@@ -9,6 +9,9 @@ if(e&&1===a.nodeType)while(c=e[d++])a.removeAttribute(c)}}),hb={set:function(a,b
 
 jQuery(document).ready(function($) {
 
+  /*
+    Animate anchor links
+  */
   $('a[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
@@ -22,9 +25,29 @@ jQuery(document).ready(function($) {
     }
   });
 
+  /*
+    Create post(open form)
+  */
   $('#create-post__btn').on('click', function(e){
     e.preventDefault();
     $('.create-post').addClass('create-post_active')
+  });
+
+  /*
+    Remove dropdown on click on free area
+  */
+  $(document).click( function(e) {
+    var container = $('.dropdown, .header__user-item');
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+      $('.dropdown').removeClass('dropdown_active');
+    }
+  });
+
+  /*
+    Open user prodile dropdown
+  */
+  $('.header__user-item').on('click', function(e){
+    $(this).find('.header__user-dropdown').toggleClass('dropdown_active');
   });
 
   var expertiseLimit = 10;
@@ -138,71 +161,64 @@ jQuery(document).ready(function($) {
     $(this).prev().addClass('executive__toggle_active');
   });
 
-  $(document).click( function(e) {
-    var container = $('.dropdown, .header__user-item');
-    if (!container.is(e.target) && container.has(e.target).length === 0) {
-      $('.dropdown').removeClass('dropdown_active');
-    }
-  });
 
-  $('.header__user-item').on('click', function(e){
-    $(this).find('.header__user-dropdown').toggleClass('dropdown_active');
-  });
+  /*
+    Custom selectbox for States filter
+  */
+  $('.custom-select').each(function(){
+    var $this = $(this), numberOfOptions = $(this).children('option').length;
 
-    $('.custom-select').each(function(){
-      var $this = $(this), numberOfOptions = $(this).children('option').length;
+    $this.addClass('select-hidden');
+    $this.wrap('<div class="select"></div>');
+    $this.after('<div class="select-styled"></div><div class="nano select-content"><div class="content"></div></div>');
 
-      $this.addClass('select-hidden');
-      $this.wrap('<div class="select"></div>');
-      $this.after('<div class="select-styled"></div><div class="nano select-content"><div class="content"></div></div>');
+    var $styledSelect = $this.next('div.select-styled');
+    $styledSelect.text($this.children('option').eq(0).text());
 
-      var $styledSelect = $this.next('div.select-styled');
-      $styledSelect.text($this.children('option').eq(0).text());
-
-      var $list = $('<ul />', {
-          'class': 'select-options'
-      });
-
-      $('.nano .content').append($list);
-
-      for (var i = 0; i < numberOfOptions; i++) {
-          $('<li />', {
-              text: $this.children('option').eq(i).text(),
-              rel: $this.children('option').eq(i).val()
-          }).appendTo($list);
-      }
-
-      var $listItems = $list.children('li');
-
-      $styledSelect.click(function(e) {
-          e.stopPropagation();
-          $('div.select-styled.active').not(this).each(function(){
-              $(this).removeClass('active');
-              $('.select-content').hide();
-          });
-          $(this).toggleClass('active')
-          $('.select-content').toggle();
-          $(".nano").nanoScroller();
-      });
-
-      $styledSelect.click(function(e) {
-        e.stopPropagation();
-        $('div.select-styled.active').not(this).each(function(){
-            $(this).removeClass('active').next('ul.select-options').hide();
-        });
+    var $list = $('<ul />', {
+        'class': 'select-options'
     });
 
-      $listItems.click(function(e) {
-          e.stopPropagation();
-          $styledSelect.text($(this).text()).removeClass('active');
-          $this.val($(this).attr('rel'));
-          $('.select-content').hide();
-      });
+    $('.nano .content').append($list);
 
-      $(document).click(function() {
-          $styledSelect.removeClass('active');
-          $('.select-content').hide();
+    for (var i = 0; i < numberOfOptions; i++) {
+        $('<li />', {
+            text: $this.children('option').eq(i).text(),
+            rel: $this.children('option').eq(i).val()
+        }).appendTo($list);
+    }
+
+    var $listItems = $list.children('li');
+
+    $styledSelect.click(function(e) {
+        e.stopPropagation();
+        $('div.select-styled.active').not(this).each(function(){
+            $(this).removeClass('active');
+            $('.select-content').hide();
+        });
+        $(this).toggleClass('active')
+        $('.select-content').toggle();
+        $(".nano").nanoScroller();
+    });
+
+    $styledSelect.click(function(e) {
+      e.stopPropagation();
+      $('div.select-styled.active').not(this).each(function(){
+          $(this).removeClass('active').next('ul.select-options').hide();
       });
+    });
+
+    $listItems.click(function(e) {
+        e.stopPropagation();
+        $styledSelect.text($(this).text()).removeClass('active');
+        $this.val($(this).attr('rel'));
+        $('.select-content').hide();
+    });
+
+    $(document).click(function() {
+        $styledSelect.removeClass('active');
+        $('.select-content').hide();
+    });
 
   });
 });
