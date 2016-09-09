@@ -97,7 +97,8 @@ jQuery(document).ready(function($) {
 
   $('#clear').on('click', function(e){
     e.preventDefault();
-    $('.side-block__select').val('').trigger("chosen:updated");
+    document.getElementById("side-form").reset();
+    //$('.side-block__select').val('').trigger("chosen:updated");
   });
 
   /*
