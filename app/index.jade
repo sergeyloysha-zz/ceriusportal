@@ -39,11 +39,11 @@ block content
   .wrapper
     .container
       aside.container__side.side
-        .side-block
+        .side-block.side-block_searchable
           .side-block__title
-            input(type="text", name="name", placeholder="Functional Role").side-block__title-input
+            input(type="text", name="name", placeholder="Functional Role", autocomplete="false").side-block__title-input#frole-search-input
           .side-block__content
-            ul.side-block__list
+            ul.side-block__list#frole-search-list
               li.side-block__list-item
                 label.side-block__list-label
                   input(type="checkbox", name="name", value="").side-block__list-checkbox
@@ -110,9 +110,9 @@ block content
                   span.side-block__list-link General Councel
         .side-block
           .side-block__title
-            input(type="text", name="name", placeholder="Industry").side-block__title-input
+            input(type="text", name="name", placeholder="Industry", autocomplete="false").side-block__title-input#industry-search-input
           .side-block__content
-            ul.side-block__list
+            ul.side-block__list#industry-search-list
               li.side-block__list-item
                 label.side-block__list-label
                   input(type="checkbox", name="name", value="").side-block__list-checkbox
