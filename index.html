@@ -42,12 +42,12 @@
     <div class="wrapper">
       <div class="container">
         <aside class="container__side side">
-          <div class="side-block">
+          <div class="side-block side-block_searchable">
             <div class="side-block__title">
-              <input type="text" name="name" placeholder="Functional Role" class="side-block__title-input">
+              <input type="text" name="name" placeholder="Functional Role" autocomplete="false" id="frole-search-input" class="side-block__title-input">
             </div>
             <div class="side-block__content">
-              <ul class="side-block__list">
+              <ul id="frole-search-list" class="side-block__list">
                 <li class="side-block__list-item">
                   <label class="side-block__list-label">
                     <input type="checkbox" name="name" value="" class="side-block__list-checkbox"><span class="side-block__list-link">Administration</span>
@@ -133,10 +133,10 @@
           </div>
           <div class="side-block">
             <div class="side-block__title">
-              <input type="text" name="name" placeholder="Industry" class="side-block__title-input">
+              <input type="text" name="name" placeholder="Industry" autocomplete="false" id="industry-search-input" class="side-block__title-input">
             </div>
             <div class="side-block__content">
-              <ul class="side-block__list">
+              <ul id="industry-search-list" class="side-block__list">
                 <li class="side-block__list-item">
                   <label class="side-block__list-label">
                     <input type="checkbox" name="name" value="" class="side-block__list-checkbox"><span class="side-block__list-link">Administration</span>
