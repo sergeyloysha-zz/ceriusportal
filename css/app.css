@@ -1342,37 +1342,37 @@ a:visited {
 .executive__lists-text {
   color: #6a6a6a;
 }
-.executive__head {
+.executive__user {
   zoom: 1;
 }
-.executive__head:after,
-.executive__head:before {
+.executive__user:after,
+.executive__user:before {
   content: "";
   display: table;
 }
-.executive__head:after {
+.executive__user:after {
   clear: both;
 }
-.executive__head-thumb {
+.executive__user-thumb {
   width: 5rem;
   height: 5rem;
   float: left;
 }
-.executive__head-thumb img {
+.executive__user-thumb img {
   display: block;
   border-radius: 5rem;
 }
-.executive__head-title {
+.executive__user-name {
   margin: 1rem 0 1rem 7rem;
   font-size: 2.4rem;
   font-weight: 500;
   color: #3c4144;
   line-height: 3rem;
 }
-.executive__all {
+.executive__user-info {
   font-weight: 500;
   color: #3c4144;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 .executive__btn {
   margin-right: 1rem;
