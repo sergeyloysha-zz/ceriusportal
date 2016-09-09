@@ -166,7 +166,7 @@ block content
             input(type="text", name="name", placeholder="Location").side-block__title-input
           .side-block__content
             .side-block__field
-              select.custom-select
+              select(data-placeholder="Choose a state...", multiple).side-block__select
                 option(value='AK') Alaska
                 option(value='HI') Hawaii
                 option(value='CA') California
@@ -233,7 +233,7 @@ block content
             .side-block__controls
               a.btn.btn_blue.btn_full
                 span Refresh
-              a.btn.btn_white.btn_full
+              a.btn.btn_white.btn_full#clear
                 span Clear All
             .side-block__hr
             .side-block__controls.side-block__controls_center
