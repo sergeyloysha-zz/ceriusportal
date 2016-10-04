@@ -679,6 +679,16 @@ a:visited {
 .btn_full {
   width: 100%;
 }
+.btn_upper {
+  text-transform: uppercase;
+}
+.btn_transparent {
+  background: rgba(0,0,0,0.15);
+  color: #fff;
+}
+.btn_transparent:hover {
+  background: rgba(0,0,0,0.2);
+}
 .favorite {
   position: relative;
   display: inline-block;
@@ -1207,8 +1217,7 @@ a:visited {
   display: none;
 }
 .create-post_active #create-post__form {
-  max-height: 90rem;
-  visibility: visible;
+  display: block;
 }
 .create-post__head {
   display: block;
@@ -1230,10 +1239,8 @@ a:visited {
   vertical-align: middle;
 }
 .create-post__form {
-  max-height: 0;
-  visibility: hidden;
-  overflow: hidden;
-  transition: max-height 0.35s ease-out;
+  display: none;
+  max-height: 90rem;
 }
 .create-post__textarea {
   display: block;
@@ -1248,6 +1255,9 @@ a:visited {
 .create-post__controls {
   padding-top: 2rem;
   text-align: right;
+}
+.create-post__controls .btn {
+  margin-left: 2rem;
 }
 .executives__find {
   margin: 3rem 0;
