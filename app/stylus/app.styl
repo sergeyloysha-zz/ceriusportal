@@ -558,6 +558,16 @@ a:visited
   &_full
     width 100%
 
+  &_upper
+    text-transform uppercase
+
+  &_transparent
+    background rgba(0, 0, 0, 0.15)
+    color color-white
+
+    &:hover
+      background rgba(0,0,0, 0.2)
+
 .favorite
   position relative
   display inline-block
@@ -1023,8 +1033,7 @@ a:visited
       display none
 
     #create-post__form
-      max-height 90rem
-      visibility visible
+      display block
 
   &__head
     display block
@@ -1046,10 +1055,8 @@ a:visited
     vertical-align middle
 
   &__form
-    max-height 0
-    visibility hidden
-    overflow hidden
-    transition max-height .35s ease-out
+    display none
+    max-height 90rem
 
   &__textarea
     display block
@@ -1064,6 +1071,9 @@ a:visited
   &__controls
     padding-top 2rem
     text-align right
+
+    .btn
+      margin-left 2rem
 
 
 .executives

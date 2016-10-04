@@ -120,9 +120,17 @@ jQuery(document).ready(function($) {
   /*
     Create post(open form)
   */
-  $('#create-post__btn').on('click', function(e){
+	$('#create-post__btn').on('click', function(e){
     e.preventDefault();
     $('.create-post').addClass('create-post_active')
+  });
+	/*
+    Create post(reset&hide form)
+  */
+	$('#create-post__cancel').on('click', function(e){
+    e.preventDefault();
+    $('.create-post').removeClass('create-post_active');
+    $('.create-post__textarea').val('');
   });
 
   /*
