@@ -1579,4 +1579,27 @@ a:visited {
   -ms-flex-preferred-size: 0;
   flex-basis: 0;
   padding-right: 10px;
+  
+  display: flex;
+  align-items: flex-start;
+}
+
+.executive__kpi-icon {
+  display: block;
+  width: 30px;
+  background: #1781c1;
+  height: 30px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.executive__kpi-icon img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.executive__kpi-text {
+  font-weight: 500;
 }
